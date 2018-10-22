@@ -2,7 +2,7 @@
 
 namespace GeneradorPruebas;
 require_once '../vendor/autoload.php';
-use Symfony\Component\Yaml\Parser;
+
 
 
 class Pregunta{
