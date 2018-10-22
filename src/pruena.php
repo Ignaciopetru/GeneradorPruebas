@@ -9,4 +9,5 @@ spl_autoload_register(function ($nombre_clase) {
 
 $v = new Prueba('/home/ignaciopetru/Descargas/preguntas.yml');
 $v->crearPreguntas();
+$v->crearHTML();
 //echo $a;

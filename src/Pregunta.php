@@ -50,15 +50,15 @@ class Pregunta{
     shuffle($this->todasLasRespuestas);
   }
 
-  public function mostrarDescripcion(){
+  public function devuelveDescripcion(){
     return $this->descripcion;
   }
 
-  public function mostrarRespuestas(){
+  public function devuelveRespuestas(){
     return $this->todasLasRespuestas;
   }
 
-  public function mostrarCorrectas(){
+  public function devuelveCorrectas(){
     return $this->respuestasCorrectas;
   }
 
