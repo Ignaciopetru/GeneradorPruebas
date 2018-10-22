@@ -36,7 +36,7 @@ class Prueba{
     $loader = new Twig_Loader_Filesystem('plantillas');
     $twig = new Twig_Environment($loader);
     $templateAlumn = $twig->load('alumno.html');
-    echo $this->preguntas[1]->devuelveDescripcion();
+    //echo $this->preguntas[1]->devuelveDescripcion();
     file_put_contents('pruebasResultados/EvaluacionAlumno.html', $templateAlumn->render(array('preguntas' => $this->preguntas)));
   }
 
