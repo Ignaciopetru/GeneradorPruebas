@@ -1,8 +1,9 @@
 <?php
 
+namespace GeneradorPruebas;
 require_once '../vendor/autoload.php';
-//use Twig_Environment;
-//use Twig_Loader_Filesystem;
+use Twig_Environment;
+use Twig_Loader_Filesystem;
 
 
 function crearHTML($preguntas){

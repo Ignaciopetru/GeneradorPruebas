@@ -2,8 +2,9 @@
 
 namespace GeneradorPruebas;
 require_once '../vendor/autoload.php';
-require_once ("crearHTML.php");
 use Symfony\Component\Yaml\Parser;
+use Twig_Environment;
+use Twig_Loader_Filesystem;
 
 
 //Esta clase, toma un archivo .yml y genera la informacion de una prueba, En el futuro tal vez, genere mas de un tema
@@ -30,10 +31,14 @@ class Prueba{
   public function mezclarPreguntas(){
     shuffle($this->preguntas);
   }
-  public function crearHTML(){
-    crearHTML($this->preguntas);
-  }
 
+  function crearHTML(){
+    $loader = new Twig_Loader_Filesystem('plantillas');
+    $twig = new Twig_Environment($loader);
+    $templateAlumn = $twig->load('alumno.html');
+    echo $this->preguntas[1]->devuelveDescripcion();
+    file_put_contents('pruebasResultados/EvaluacionAlumno.html', $templateAlumn->render(array('preguntas' => $this->preguntas)));
+  }
 
 
 }
