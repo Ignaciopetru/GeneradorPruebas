@@ -35,9 +35,10 @@ class Prueba{
   function crearHTML(){
     $loader = new Twig_Loader_Filesystem('plantillas');
     $twig = new Twig_Environment($loader);
-    $templateAlumn = $twig->load('alumno.html');
-    //echo $this->preguntas[1]->devuelveDescripcion();
-    file_put_contents('pruebasResultados/EvaluacionAlumno.html', $templateAlumn->render(array('preguntas' => $this->preguntas)));
+    $plantillaAlumno = $twig->load('alumno.html');
+    $plantillaProfesor = $twig->load('profesor.html');
+    file_put_contents('pruebasResultados/EvaluacionAlumno.html', $plantillaAlumno->render(array('preguntas' => $this->preguntas)));
+    file_put_contents('pruebasResultados/EvaluacionProfesor.html', $plantillaProfesor->render(array('preguntas' => $this->preguntas)));
   }
 
 

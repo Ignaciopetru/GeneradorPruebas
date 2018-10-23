@@ -13,6 +13,7 @@ class Pregunta{
   protected $ocultarTodasAnteriores = false;
   protected $ocultarNingunaAnteriores = false;
   protected $todasLasRespuestas = [];
+  protected $correctasProfesor = ' ';
 
   public function __construct($preguntaYaml){
 
@@ -29,6 +30,8 @@ class Pregunta{
     }
 
     if($this->ocultarTodasAnteriores != true && count($preguntaYaml['respuestas_incorrectas']) == 0){
+      $this->respuestasIncorrectas = $this->respuestasCorrectas;
+      $this->respuestasCorrectas = [];
       array_push($this->respuestasCorrectas, 'Todas las anteriores');
     }else{
       if($this->ocultarTodasAnteriores!= true && count($preguntaYaml['respuestas_incorrectas']) != 0){
@@ -45,6 +48,7 @@ class Pregunta{
     }
 
     $this->todasLasRespuestas = array_merge($this->respuestasCorrectas, $this->respuestasIncorrectas);
+    $this->calcularCorrectasProfe();
   }
 
   public function mexclarRespuestas() {
@@ -61,6 +65,23 @@ class Pregunta{
 
   public function devuelveCorrectas(){
     return $this->respuestasCorrectas;
+  }
+
+  public function devuelveCorrectasProfe(){
+
+    return $this->correctasProfesor;
+  }
+
+  public function calcularCorrectasProfe(){
+    $this->mexclarRespuestas();
+    $letras = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N'];
+      for ($i=0; $i < count($this->todasLasRespuestas); $i++) {
+        for ($j=0; $j < count($this->respuestasCorrectas); $j++) {
+          if($this->todasLasRespuestas[$i] == $this->respuestasCorrectas[$j]){
+            $this->correctasProfesor = $this->correctasProfesor . $letras[$i];
+        }
+      }
+    }
   }
 
 }
