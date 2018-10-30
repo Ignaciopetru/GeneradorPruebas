@@ -17,11 +17,11 @@ class Prueba{
   protected $canTemas;
   protected $materia;
 
-  public function __construct($archivo, $canTemas, $materia){
+  public function __construct($directorio, $tema,$materia){
     $this->materia = $materia;
-    $this->canTemas = $canTemas;
+    $this->tema = $tema;
     $this->yaml = new Parser();
-    $this->value = $this->yaml->parse(file_get_contents($archivo));
+    $this->value = $this->yaml->parse(file_get_contents($directorio));
     $this->preguntasYaml = $this->value['preguntas'];
   }
 
@@ -37,12 +37,13 @@ class Prueba{
   }
 
   function crearHTML(){
+    $this->mezclarPreguntas();
     $loader = new Twig_Loader_Filesystem('plantillas');
     $twig = new Twig_Environment($loader);
     $plantillaAlumno = $twig->load('alumno.html');
     $plantillaProfesor = $twig->load('profesor.html');
-    file_put_contents('pruebasResultados/EvaluacionAlumno.html', $plantillaAlumno->render(array('preguntas' => $this->preguntas,'materia' => $this->materia)));
-    file_put_contents('pruebasResultados/EvaluacionProfesor.html', $plantillaProfesor->render(array('preguntas' => $this->preguntas ,'materia' => $this->materia)));
+    file_put_contents('pruebasResultados/EvaluacionAlumno'.$this->tema.'.html', $plantillaAlumno->render(array('preguntas' => $this->preguntas,'materia' => $this->materia, 'tema' => $this->tema)));
+    file_put_contents('pruebasResultados/EvaluacionProfesor'.$this->tema.'.html', $plantillaProfesor->render(array('preguntas' => $this->preguntas ,'materia' => $this->materia, 'tema' => $this->tema)));
   }
 
 

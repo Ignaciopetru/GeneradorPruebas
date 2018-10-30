@@ -3,11 +3,13 @@
 namespace GeneradorPruebas;
 require_once '../vendor/autoload.php';
 
-
 include ('index.php');
+$canTemas = $_POST['canTemas'];
+$materia = $_POST['materia'];
+$directorio = $_POST['archivo'];
 
-//continua bajo pruebas, no es resultado final
-$v = new Prueba('/home/ignaciopetru/Descargas/preguntas.yml'/*$_POST['archivo']*/, $_POST['canTemas'], $_POST['materia']);
-$v->crearPreguntas();
-$v->crearHTML();
-//echo $a;
+for ($i=1; $i <= $canTemas; $i++) {
+    $salida = new Prueba($_POST['archivo'], $i, $_POST['materia']);
+    $salida->crearPreguntas();
+    $salida->crearHTML();
+}
