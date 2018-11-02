@@ -1,7 +1,7 @@
 <?php
 
 namespace GeneradorPruebas;
-require_once '../vendor/autoload.php';
+//require_once '../vendor/autoload.php';
 use Symfony\Component\Yaml\Parser;
 use Twig_Environment;
 use Twig_Loader_Filesystem;
@@ -17,7 +17,7 @@ class Prueba{
   protected $canTemas;
   protected $materia;
 
-  public function __construct($directorio, $tema,$materia){
+  public function __construct($directorio, $tema, $materia){
     $this->materia = $materia;
     $this->tema = $tema;
     $this->yaml = new Parser();
@@ -32,7 +32,11 @@ class Prueba{
     }
   }
 
-  public function mezclarPreguntas(){
+  public function devuelvePreguntas(){
+      return $this->preguntas;
+  }
+
+  private function mezclarPreguntas(){
     shuffle($this->preguntas);
   }
 

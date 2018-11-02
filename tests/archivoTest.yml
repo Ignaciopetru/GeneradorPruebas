@@ -1,0 +1,10 @@
+preguntas:
+
+  - descripcion: descripcion
+    respuestas_correctas:
+      - Esta respuesta es correcta
+      - Esta tambien
+    respuestas_incorrectas:
+      - Esta respuesta es incorrecta
+      - Esta es incorrecta
+    ocultar_opcion_todas_las_anteriores: true

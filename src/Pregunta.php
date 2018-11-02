@@ -1,7 +1,7 @@
 <?php
 
 namespace GeneradorPruebas;
-require_once '../vendor/autoload.php';
+//require_once '../vendor/autoload.php';
 
 
 
@@ -51,7 +51,7 @@ class Pregunta{
     $this->calcularCorrectasProfe();
   }
 
-  public function mexclarRespuestas() {
+  public function mezclarRespuestas() {
     shuffle($this->todasLasRespuestas);
   }
 
@@ -68,12 +68,11 @@ class Pregunta{
   }
 
   public function devuelveCorrectasProfe(){
-
     return $this->correctasProfesor;
   }
 
-  public function calcularCorrectasProfe(){
-    $this->mexclarRespuestas();
+  private function calcularCorrectasProfe(){
+    $this->mezclarRespuestas();
     $letras = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N'];
       for ($i=0; $i < count($this->todasLasRespuestas); $i++) {
         for ($j=0; $j < count($this->respuestasCorrectas); $j++) {
