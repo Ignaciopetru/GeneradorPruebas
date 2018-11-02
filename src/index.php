@@ -18,6 +18,10 @@ echo '
     <label for="temas">Cant. temas</label>
     <input type="text" class="form-control" id="canTemas" name="canTemas" placeholder="Ingrese la cant. de temas">
   </div>
+  <div class="form-group">
+    <label for="fecha">Fecha del examen</label>
+    <input type="text" class="form-control" id="fecha" name="fecha" placeholder="DD/MM/AA">
+  </div>
   <button type="submit" >Enviar</button>
 </form>
 ';

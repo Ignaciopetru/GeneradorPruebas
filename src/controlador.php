@@ -5,11 +5,12 @@ namespace GeneradorPruebas;
 
 include ('index.php');
 $canTemas = $_POST['canTemas'];
+$archivo = $_POST['archivo'];
 $materia = $_POST['materia'];
-$directorio = $_POST['archivo'];
+$fecha = $_POST['fecha'];
 
 for ($i=1; $i <= $canTemas; $i++) {
-    $salida = new Prueba($_POST['archivo'], $i, $_POST['materia']);
+    $salida = new Prueba($archivo, $i, $materia, $fecha);
     $salida->crearPreguntas();
     $salida->mezclarPreguntas();
     $salida->crearHTML();

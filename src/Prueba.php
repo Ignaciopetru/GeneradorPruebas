@@ -16,8 +16,10 @@ class Prueba{
   protected $preguntas = [];
   protected $canTemas;
   protected $materia;
+  protected $fecha;
 
-  public function __construct($directorio, $tema, $materia){
+  public function __construct($directorio, $tema, $materia, $fecha){
+    $this->fecha = $fecha;
     $this->materia = $materia;
     $this->tema = $tema;
     $this->yaml = new Parser();
@@ -36,18 +38,18 @@ class Prueba{
       return $this->preguntas;
   }
 
-  private function mezclarPreguntas(){
+  public function mezclarPreguntas(){
     shuffle($this->preguntas);
   }
 
   function crearHTML(){
-    $this->mezclarPreguntas();
+    //$this->mezclarPreguntas();
     $loader = new Twig_Loader_Filesystem('plantillas');
     $twig = new Twig_Environment($loader);
     $plantillaAlumno = $twig->load('alumno.html');
     $plantillaProfesor = $twig->load('profesor.html');
-    file_put_contents('pruebasResultados/EvaluacionAlumno'.$this->tema.'.html', $plantillaAlumno->render(array('preguntas' => $this->preguntas,'materia' => $this->materia, 'tema' => $this->tema)));
-    file_put_contents('pruebasResultados/EvaluacionProfesor'.$this->tema.'.html', $plantillaProfesor->render(array('preguntas' => $this->preguntas ,'materia' => $this->materia, 'tema' => $this->tema)));
+    file_put_contents('pruebasResultados/EvaluacionAlumno'.$this->tema.'.html', $plantillaAlumno->render(array('preguntas' => $this->preguntas,'materia' => $this->materia, 'tema' => $this->tema, 'fecha' => $this->fecha)));
+    file_put_contents('pruebasResultados/EvaluacionProfesor'.$this->tema.'.html', $plantillaProfesor->render(array('preguntas' => $this->preguntas ,'materia' => $this->materia, 'tema' => $this->tema, 'fecha' => $this->fecha)));
   }
 
 
