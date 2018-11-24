@@ -85,7 +85,7 @@ class Pregunta
     public function devuelveRespuestas()
     {
         return $this->todasLasRespuestas;
-    }string
+    }
 
     /**
       * @desc devuelve las respuestas correctas
