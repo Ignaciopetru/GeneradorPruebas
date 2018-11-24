@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 
 
 class testPregunta extends TestCase {
-    public function testPreguntas() {
+    public function testPreguntas1() {
         $preguntaYaml = array(
                 "descripcion" => "Esto es un test",
                 "respuestas_correctas" => array("Esta respuesta es correcta", "Esta tambien"),
@@ -27,5 +27,22 @@ class testPregunta extends TestCase {
             $iguales = false;
         }
         $this->assertFalse($iguales);
+    }
+
+    public function testPreguntas2() {
+        $preguntaYaml = array(
+                "descripcion" => "Esto es un test",
+                "respuestas_correctas" => array("Esta respuesta es correcta", "Esta tambien"),
+                "respuestas_incorrectas" => array("Esta respuesta es incorrecta", "Esta es incorrecta"),
+                "ocultar_opcion_todas_las_anteriores" => true,
+                "ocultas_opcion_ninguna_de_las_anteriores" => true,
+                );
+
+        $pregunta = New Pregunta($preguntaYaml);
+
+        $this->assertEquals($pregunta->devuelveDescripcion(), "Esto es un test");
+        $this->assertEquals($pregunta->devuelveCorrectas(), array("Esta respuesta es correcta", "Esta tambien"));
+        $this->assertEquals(count($pregunta->devuelveRespuestas()), 4);
+        $this->assertEquals(mb_strlen($pregunta->devuelveCorrectasProfe()), 3);
     }
 }
