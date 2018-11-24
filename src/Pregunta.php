@@ -4,7 +4,9 @@ namespace GeneradorPruebas;
 //require_once '../vendor/autoload.php';
 
 
-
+/**
+  * @desc genera un pregunta,con su descripcion y respuestas
+*/
 class Pregunta
 {
 
@@ -16,6 +18,11 @@ class Pregunta
     protected $todasLasRespuestas = [];
     protected $correctasProfesor = ' ';
 
+    /**
+	  * @desc devuelve construye la clase pregunta
+	  * @param array donde se encuentra la informaciosn necesaria
+	  * @return
+	*/
     public function __construct($preguntaYaml)
     {
 
@@ -54,36 +61,63 @@ class Pregunta
 
     }
 
+    /**
+      * @desc mezcla las respuestas
+    */
     public function mezclarRespuestas()
     {
         shuffle($this->todasLasRespuestas);
     }
 
+    /**
+      * @desc devuelve la descripcion
+      * @return string
+    */
     public function devuelveDescripcion()
     {
         return $this->descripcion;
     }
 
+    /**
+      * @desc devuelve las respuestas
+      * @return array
+    */
     public function devuelveRespuestas()
     {
         return $this->todasLasRespuestas;
-    }
+    }string
 
+    /**
+      * @desc devuelve las respuestas correctas
+      * @return array
+    */
     public function devuelveCorrectas()
     {
         return $this->respuestasCorrectas;
     }
 
+    /**
+      * @desc devuelve las respuestas incorrectas
+      * @return array
+    */
     public function devuelveIncorrectas()
     {
         return $this->respuestasIncorrectas;
     }
 
+    /**
+      * @desc devuelve las letras asigandas a las respuestas correctas
+      * @return string
+    */
     public function devuelveCorrectasProfe()
     {
         return $this->correctasProfesor;
     }
 
+    /**
+      * @desc genera las letras asigandas a las respuestas correctas
+      * @return
+    */
     private function calcularCorrectasProfe()
     {
     $this->mezclarRespuestas();

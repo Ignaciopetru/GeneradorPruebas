@@ -6,8 +6,9 @@ use Symfony\Component\Yaml\Parser;
 use Twig_Environment;
 use Twig_Loader_Filesystem;
 
-
-//Esta clase, toma un archivo .yml y genera la informacion de una prueba, En el futuro tal vez, genere mas de un tema
+/**
+  * @desc genera un prueba,y dos archivos html
+*/
 class Prueba
 {
 
@@ -19,6 +20,11 @@ class Prueba
     protected $materia;
     protected $fecha;
 
+    /**
+      * @desc devuelve construye la clase pruega
+      * @param string toma un directorio un tema una materia y una fecha y genera una prueba
+      * @return
+    */
     public function __construct($directorio, $tema, $materia, $fecha)
     {
         $this->fecha = $fecha;
@@ -29,6 +35,9 @@ class Prueba
         $this->preguntasYaml = $this->value['preguntas'];
     }
 
+    /**
+      * @desc crea una array de objetos pregunta
+    */
     public function crearPreguntas()
     {
         $cantPreguntas = count($this->preguntasYaml);
@@ -37,16 +46,27 @@ class Prueba
         }
     }
 
+    /**
+      * @desc devuelve las preguntas
+      * @return array
+    */
     public function devuelvePreguntas()
     {
         return $this->preguntas;
     }
 
+    /**
+      * @desc mezcla las preguntas
+    */
     public function mezclarPreguntas()
     {
         shuffle($this->preguntas);
     }
 
+    /**
+      * @desc crea el html de las pruebas
+      * @return html retorna dos archivos html
+    */
     function crearHTML()
     {
         $loader = new Twig_Loader_Filesystem('plantillas');
