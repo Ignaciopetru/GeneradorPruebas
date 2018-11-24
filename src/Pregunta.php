@@ -34,7 +34,7 @@ class Pregunta
             $this->ocultarTodasAnteriores = true;
         }
 
-        if (array_key_exists('ocultas_opcion_ninguna_de_las_anteriores', $preguntaYaml)) {
+        if (array_key_exists('ocultar_opcion_ninguna_de_las_anteriores', $preguntaYaml)) {
         	$this->ocultarNingunaAnteriores = true;
         }
 

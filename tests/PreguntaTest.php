@@ -5,6 +5,11 @@ use PHPUnit\Framework\TestCase;
 
 
 class testPregunta extends TestCase {
+
+    /**
+      * @desc Comprueba que los metodos de la clase pregunta funcionen correctamente. En los siguientes tests
+      * varia los posibles casos.
+      */
     public function testPreguntas1() {
         $preguntaYaml = array(
                 "descripcion" => "Esto es un test",
@@ -28,14 +33,14 @@ class testPregunta extends TestCase {
         }
         $this->assertFalse($iguales);
     }
-
+    
     public function testPreguntas2() {
         $preguntaYaml = array(
                 "descripcion" => "Esto es un test",
                 "respuestas_correctas" => array("Esta respuesta es correcta", "Esta tambien"),
                 "respuestas_incorrectas" => array("Esta respuesta es incorrecta", "Esta es incorrecta"),
                 "ocultar_opcion_todas_las_anteriores" => true,
-                "ocultas_opcion_ninguna_de_las_anteriores" => true,
+                "ocultar_opcion_ninguna_de_las_anteriores" => true,
                 );
 
         $pregunta = New Pregunta($preguntaYaml);
@@ -45,13 +50,13 @@ class testPregunta extends TestCase {
         $this->assertEquals(count($pregunta->devuelveRespuestas()), 4);
         $this->assertEquals(mb_strlen($pregunta->devuelveCorrectasProfe()), 3);
     }
-
+   
     public function testPreguntas3() {
         $preguntaYaml = array(
                 "descripcion" => "Esto es un test",
                 "respuestas_correctas" => array("Esta respuesta es correcta", "Esta tambien"),
                 "respuestas_incorrectas" => array(),
-                "ocultas_opcion_ninguna_de_las_anteriores" => true,
+                "ocultar_opcion_ninguna_de_las_anteriores" => true,
                 );
 
         $pregunta = New Pregunta($preguntaYaml);
@@ -66,7 +71,7 @@ class testPregunta extends TestCase {
                 "descripcion" => "Esto es un test",
                 "respuestas_correctas" => array("Esta respuesta es correcta", "Esta tambien"),
                 "respuestas_incorrectas" => array("Hay una mas incorrecta"),
-                "ocultas_opcion_ninguna_de_las_anteriores" => true,
+                "ocultar_opcion_ninguna_de_las_anteriores" => true,
                 );
 
         $pregunta = New Pregunta($preguntaYaml);
@@ -85,6 +90,5 @@ class testPregunta extends TestCase {
 
         $this->assertEquals($pregunta->devuelveCorrectas(), array("Ninguna de las anteriores"));
     }
-
 
 }
