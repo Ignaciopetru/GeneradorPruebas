@@ -10,7 +10,7 @@ class testPrueba extends TestCase {
     */
 
     public function testPruebas() {
-        $prueba = New Prueba( "./tests/archivoTest.yml", 1, "Matematica", "23/5/12");
+        $prueba = New Prueba( "./tests/archivoTest.yml", 1, "Matematica", "23/5/12", 1);
         $prueba->crearPreguntas();
         $this->assertEquals(count($prueba->devuelvePreguntas()), 1);
         $antes = $prueba->devuelvePreguntas();
@@ -21,9 +21,9 @@ class testPrueba extends TestCase {
     }
 
     public function testPruebasMul() {
-        $prueba = New Prueba( "./tests/preguntas.yml", 25, "Matematica", "28/11/18");
+        $prueba = New Prueba( "./tests/preguntas.yml", 1, "Matematica", "28/11/18", 12);
         $prueba->crearPreguntas();
-        $this->assertEquals(count($prueba->devuelvePreguntas()), 25);
+        $this->assertEquals(count($prueba->devuelvePreguntas()), 12);
         $antes = $prueba->devuelvePreguntas();
         $prueba->mezclarPreguntas();
         $despues = $prueba->devuelvePreguntas();

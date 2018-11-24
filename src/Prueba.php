@@ -19,14 +19,16 @@ class Prueba
     protected $canTemas;
     protected $materia;
     protected $fecha;
+    protected $cantPreguntas;
 
     /**
       * @desc devuelve construye la clase pruega
       * @param string toma un directorio un tema una materia y una fecha y genera una prueba
       * @return
     */
-    public function __construct($directorio, $tema, $materia, $fecha)
+    public function __construct($directorio, $tema, $materia, $fecha, $cantPreguntas)
     {
+        $this->cantPreguntas = $cantPreguntas;
         $this->fecha = $fecha;
         $this->materia = $materia;
         $this->tema = $tema;
@@ -40,9 +42,10 @@ class Prueba
     */
     public function crearPreguntas()
     {
-        $cantPreguntas = count($this->preguntasYaml);
-        for ($i=0; $i < $cantPreguntas; $i++) {
-          $this->preguntas[$i] = new Pregunta ($this->preguntasYaml[$i]);
+        $limitePreguntas = count($this->preguntasYaml);
+        for ($i=0; $i < $this->cantPreguntas; $i++) {
+          $tmp = rand( 0, $limitePreguntas-1 );
+          $this->preguntas[$i] = new Pregunta ($this->preguntasYaml[$tmp]);
         }
     }
 
