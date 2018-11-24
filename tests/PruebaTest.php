@@ -15,4 +15,15 @@ class testPrueba extends TestCase {
         $this->assertTrue(current($despues) == current($antes));
         $prueba->crearHTML();
     }
+
+    public function testPruebasMul() {
+        $prueba = New Prueba( "./tests/preguntas.yml", 25, "Matematica", "23/5/12");
+        $prueba->crearPreguntas();
+        $this->assertEquals(count($prueba->devuelvePreguntas()), 25);
+        $antes = $prueba->devuelvePreguntas();
+        $prueba->mezclarPreguntas();
+        $despues = $prueba->devuelvePreguntas();
+        $this->assertFalse(current($despues) == current($antes));
+        $prueba->crearHTML();
+    }
 }
