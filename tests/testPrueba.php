@@ -9,5 +9,6 @@ class testPrueba extends TestCase {
         $prueba = New Prueba("./tests/archivoTest.yml", 1, "Matematica");
         $prueba->crearPreguntas();
         $this->assertEquals(count($prueba->devuelvePreguntas()), 1);
+        assertTrue($prueba->crearHTML());
     }
 }

@@ -55,6 +55,7 @@ class Prueba
         $plantillaProfesor = $twig->load('profesor.html');
         file_put_contents('pruebasResultados/EvaluacionAlumno'.$this->tema.'.html', $plantillaAlumno->render(array('preguntas' => $this->preguntas,'materia' => $this->materia, 'tema' => $this->tema, 'fecha' => $this->fecha)));
         file_put_contents('pruebasResultados/EvaluacionProfesor'.$this->tema.'.html', $plantillaProfesor->render(array('preguntas' => $this->preguntas ,'materia' => $this->materia, 'tema' => $this->tema, 'fecha' => $this->fecha)));
+        return true;
     }
 
 
