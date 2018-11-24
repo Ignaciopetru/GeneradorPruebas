@@ -74,6 +74,11 @@ class Pregunta
         return $this->respuestasCorrectas;
     }
 
+    public function devuelveIncorrectas()
+    {
+        return $this->respuestasIncorrectas;
+    }
+
     public function devuelveCorrectasProfe()
     {
         return $this->correctasProfesor;

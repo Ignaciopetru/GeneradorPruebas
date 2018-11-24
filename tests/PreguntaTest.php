@@ -45,4 +45,46 @@ class testPregunta extends TestCase {
         $this->assertEquals(count($pregunta->devuelveRespuestas()), 4);
         $this->assertEquals(mb_strlen($pregunta->devuelveCorrectasProfe()), 3);
     }
+
+    public function testPreguntas3() {
+        $preguntaYaml = array(
+                "descripcion" => "Esto es un test",
+                "respuestas_correctas" => array("Esta respuesta es correcta", "Esta tambien"),
+                "respuestas_incorrectas" => array(),
+                "ocultas_opcion_ninguna_de_las_anteriores" => true,
+                );
+
+        $pregunta = New Pregunta($preguntaYaml);
+
+        $this->assertEquals($pregunta->devuelveCorrectas(), array("Todas las anteriores"));
+        $this->assertEquals(count($pregunta->devuelveRespuestas()), 3);
+        $this->assertEquals(count($pregunta->devuelveIncorrectas()), 2);
+    }
+
+    public function testPreguntas4() {
+        $preguntaYaml = array(
+                "descripcion" => "Esto es un test",
+                "respuestas_correctas" => array("Esta respuesta es correcta", "Esta tambien"),
+                "respuestas_incorrectas" => array("Hay una mas incorrecta"),
+                "ocultas_opcion_ninguna_de_las_anteriores" => true,
+                );
+
+        $pregunta = New Pregunta($preguntaYaml);
+
+        $this->assertEquals($pregunta->devuelveIncorrectas(), array("Hay una mas incorrecta","Todas las anteriores"));
+    }
+
+    public function testPreguntas5() {
+        $preguntaYaml = array(
+                "descripcion" => "Esto es un test",
+                "respuestas_correctas" => array(),
+                "respuestas_incorrectas" => array("Hay una mas incorrecta"),
+                );
+
+        $pregunta = New Pregunta($preguntaYaml);
+
+        $this->assertEquals($pregunta->devuelveCorrectas(), array("Ninguna de las anteriores"));
+    }
+
+
 }
