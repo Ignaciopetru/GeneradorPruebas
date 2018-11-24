@@ -53,9 +53,10 @@ class Prueba
         $twig = new Twig_Environment($loader);
         $plantillaAlumno = $twig->load('alumno.html');
         $plantillaProfesor = $twig->load('profesor.html');
+        $antes= count(glob('GeneradorPruebas/pruebasResultados/{.html}',GLOB_BRACE));
         file_put_contents('pruebasResultados/EvaluacionAlumno'.$this->tema.'.html', $plantillaAlumno->render(array('preguntas' => $this->preguntas,'materia' => $this->materia, 'tema' => $this->tema, 'fecha' => $this->fecha)));
         file_put_contents('pruebasResultados/EvaluacionProfesor'.$this->tema.'.html', $plantillaProfesor->render(array('preguntas' => $this->preguntas ,'materia' => $this->materia, 'tema' => $this->tema, 'fecha' => $this->fecha)));
-        return true;
+        $total = count(glob('GeneradorPruebas/pruebasResultados/{.html}',GLOB_BRACE));
     }
 
 

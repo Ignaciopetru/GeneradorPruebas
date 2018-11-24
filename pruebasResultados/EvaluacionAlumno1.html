@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<head>
+<style>
+.columns {
+  column-width: 200px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.grid-container {
+  display: grid;
+  padding: 20px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat (2, 50vh);
+  grid-gap: 20px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 5px;
+  padding-top:10;
+  font-size: 20px;
+}
+</style>
+</head>
+<body>
+
+<div>
+  <p style="float: left; padding-left: 20px;"><b>Nombre y Apellido __________________________________________</b></p>
+  <p style="float: right; padding-right: 20px;"><b>IPS.</b></p>
+  <p style="float: right; padding-right: 100px;"><b>Evaluación Matematica - Tema: 1 23/5/12</b></p>
+<br><br><br>
+</div>
+
+
+<div class="grid-container">
+        <div class="grid-item">
+      <b><label>1)_________ descripcion</label></b><br>
+                                <br><label>A) Ninguna de las anteriores</label>
+                      <br><label>B) Esta respuesta es incorrecta</label>
+                      <br><label>C) Esta respuesta es correcta</label>
+                      <br><label>D) Esta es incorrecta</label>
+                      <br><label>E) Esta tambien</label>
+                  </div>
+    
+</div>
+</body>
+</html>
