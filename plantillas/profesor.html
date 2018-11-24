@@ -4,33 +4,38 @@
 <meta charset="UTF-8">
 <head>
 <style>
+@page
+{
+  size: A4 landscape;
+  margin: 0;
+}
 .columns {
-  column-width: 200px;
-  max-width: 800px;
+  column-width: 40%;
+  max-width: 40%;
   margin: 0 auto;
 }
 .grid-container {
   display: grid;
-  padding: 20px;
+  padding: 1%;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat (2, 50vh);
-  grid-gap: 20px;
+  grid-gap: 1%;
 }
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 5px;
   padding-top:10;
-  font-size: 20px;
+  font-size: 1.4vw;
 }
 </style>
 </head>
 <body>
 
 <div>
-  <p style="float: left; padding-left: 20px;"><b>Nombre y Apellido __________________________________________</b></p>
-  <p style="float: right; padding-right: 20px;"><b>IPS.</b></p>
-  <p style="float: right; padding-right: 100px;"><b>Evaluación {{materia}} - Tema: {{tema}} {{fecha}}</b></p>
+  <p style="float: left; padding-left: 1%; font-size: 1.25vw;"><b>Nombre y Apellido __________________________________________</b></p>
+  <p style="float: right; padding-right: 1%; font-size: 1.25vw;"><b>IPS.</b></p>
+  <p style="float: right; padding-right: 5%; font-size: 1.25vw;"><b>Evaluación Matematica - Tema: 1 28/11/18</b></p>
 <br><br><br>
 </div>
 
