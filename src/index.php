@@ -22,6 +22,10 @@ echo '
     <label for="fecha">Fecha del examen</label>
     <input type="text" class="form-control" id="fecha" name="fecha" placeholder="DD/MM/AA">
   </div>
+  <div class="form-group">
+    <label for="cantPreg">Cantidad de preguntas</label>
+    <input type="text" class="form-control" id="cantPreg" name="cantPreg" placeholder="Cant. de preguntas">
+  </div>
   <button type="submit" >Enviar</button>
 </form>
 ';
